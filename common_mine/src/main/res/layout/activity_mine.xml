@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        tools:ignore="ResourceName">
+    <data>
+        <variable name="refreshPresenter" type="com.mou.basemvvm.helper.listener.RefreshPresenter"/>
+        <variable name="viewModel" type="com.sun.common_mine.mvvm.viewmodel.MineViewModel"/>
+    </data>
+
+    <com.fortunes.commonsdk.view.toolbar.MyToolBarLayout
+            app:public_toolbar_title="个人中心"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <com.fortunes.commonsdk.view.statusview.MultipleStatusView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                bind:onError="@{refreshPresenter}"
+                bind:status="@{viewModel.pageState}">
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    bind:onRefresh="@{refreshPresenter}"
+                    bind:refreshing="@{viewModel.listState}">
+                    <!--bind:onError="@{refreshPresenter}"-->
+                    <!--bind:status="@{viewModel.listState}">-->
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.fortunes.commonsdk.view.statusview.MultipleStatusView>
+    </com.fortunes.commonsdk.view.toolbar.MyToolBarLayout>
+</layout>

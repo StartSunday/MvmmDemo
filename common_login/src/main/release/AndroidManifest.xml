@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.sun.common_login">
+
+    <application>
+
+        <meta-data
+                android:name="com.sun.common_mine.app.GlobalConfiguration"
+                android:value="ConfigModule"/>
+
+        <activity
+                android:name=".mvvm.view.LoginActivity"
+                android:screenOrientation="portrait"
+                android:label="登录">
+        </activity>
+        <activity android:name=".mvvm.view.RegisterActivity"
+                  android:label="注册"
+                  android:screenOrientation="portrait"
+              >
+
+        </activity>
+    </application>
+
+</manifest>
