@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.mou.basemvvm.helper.listener.ClickPresenter
 import com.mou.basemvvm.widget.LoadDialog
 import dagger.Lazy
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjectionModule
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -101,13 +103,13 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment(), IView, IActivity,
     }
 
     override fun onAttach(context: Context?) {
-        AndroidSupportInjection.inject(this)
+        AndroidSupportInjection.inject(this@BaseFragment)
         super.onAttach(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), null, false)
-        mBinding.setLifecycleOwner(this)
+        mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        mBinding.lifecycleOwner = this
         return mBinding.root
     }
 

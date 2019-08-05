@@ -13,6 +13,7 @@ import com.mou.basemvvm.widget.LoadDialog
 import com.noober.background.BackgroundLibrary
 import dagger.Lazy
 import dagger.android.AndroidInjection
+import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
 /***
@@ -44,15 +45,25 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), IView, I
     override fun onCreate(savedInstanceState: Bundle?) {
         BackgroundLibrary.inject(this)
         AndroidInjection.inject(this)
+
         mBinding = DataBindingUtil.setContentView(this, getLayoutId())
         super.onCreate(savedInstanceState)
         mBinding.lifecycleOwner = this
         initView()
         initData()
+
+        if (getNeedEvenBus()){
+            EventBus.getDefault().register(this)
+        }
     }
 
      inline fun < reified T : ViewModel> createVM(): T = ViewModelProviders.of(this, factory.get()).get(T::class.java)
-
+    /**
+     * 是否需要EventBus
+     */
+    open fun getNeedEvenBus():Boolean{
+        return false
+    }
 
     override fun onClick(v: View) {
 
@@ -76,6 +87,9 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), IView, I
     }
 
     override fun onDestroy() {
+        if (getNeedEvenBus()){
+            EventBus.getDefault().unregister(this)
+        }
         super.onDestroy()
         progressDialog.dismiss()
     }

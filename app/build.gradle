@@ -33,6 +33,9 @@ dependencies {
     if (!isBuildModule.toBoolean()) {
         api project(':common_login')
         api project(':common_mine')
+        api project(':common_home')
+        api project(':common_my')
 //        implementation project(':module_mine')
     }
+    api project(':commonres')
 }

@@ -5,7 +5,7 @@
     <application>
 
         <meta-data
-                android:name="com.sun.common_mine.app.GlobalConfiguration"
+                android:name="com.sun.common_login.app.GlobalConfiguration"
                 android:value="ConfigModule"/>
 
         <activity

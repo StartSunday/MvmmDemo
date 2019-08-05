@@ -31,6 +31,8 @@ object RouterConstants {
      * 主界面
      */
     const val MAIN_ACTIVITY = "$HOME/MainActivity"
+    const val HOME_FRAGMENT = "$HOME/HomeFragment"
+    const val My_FRAGMENT = "$HOME/MyFragment"
     /**
      * 登录
      */

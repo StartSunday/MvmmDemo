@@ -9,8 +9,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/common_home" />
             <option value="$PROJECT_DIR$/common_login" />
             <option value="$PROJECT_DIR$/common_mine" />
+            <option value="$PROJECT_DIR$/common_my" />
+            <option value="$PROJECT_DIR$/commonres" />
             <option value="$PROJECT_DIR$/lib_basemvvm" />
             <option value="$PROJECT_DIR$/lib_common" />
           </set>

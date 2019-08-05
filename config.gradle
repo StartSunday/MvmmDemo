@@ -15,6 +15,10 @@ ext {
             glideSdkVersion         : "4.5.0",
             lifeVersion             : "1.1.1",
             kotlin_version          : "1.2.71",
+            canarySdkVersion        : "1.6",
+            //RX_life
+            rxlife                 : '1.0',
+            eventbus                : '3.1.1',
     ]
 
     dependencies = [
@@ -94,5 +98,14 @@ ext {
             //日志
             "timber"                            : "com.jakewharton.timber:timber:4.7.0",
 
+            "canary-debug"                      : "com.squareup.leakcanary:leakcanary-android:${version["canarySdkVersion"]}",
+            "canary-release"                    : "com.squareup.leakcanary:leakcanary-android-no-op:${version["canarySdkVersion"]}",
+
+            arms                                 :'me.jessyan:arms:2.5.0',
+
+            //RxLifecycle  解决RxJava内存泄漏
+            rxlifecycle                          :"com.trello:rxlifecycle-kotlin:${version["rxlife"]}",
+            rxlifecycleComponents                :"com.trello:rxlifecycle-components:${version["rxlife"]}",
+            eventbus                              :"org.greenrobot:eventbus:${version["eventbus"]}",
     ]
 }

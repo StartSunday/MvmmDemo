@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">commonsdk</string>
-    <string name="public_app_name">mvvm模块化</string>
+    <string name="public_app_name">mvvm组件化demo</string>
 </resources>

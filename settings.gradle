@@ -1,1 +1,1 @@
-include ':app', ':lib_basemvvm', ':lib_common', ':common_login', ':common_mine'
+include ':app', ':lib_basemvvm', ':lib_common', ':common_login', ':common_mine', ':commonres', ':common_my','common_home'

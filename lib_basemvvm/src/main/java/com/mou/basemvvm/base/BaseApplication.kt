@@ -34,6 +34,7 @@ abstract class BaseApplication : Application() , HasActivityInjector {
 
     companion object {
         private var instance: Application? = null
+        @JvmStatic
         fun instance() = instance ?: throw Throwable("instance 还未初始化完成")
     }
 

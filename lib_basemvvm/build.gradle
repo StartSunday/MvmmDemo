@@ -97,6 +97,8 @@ dependencies {
     api rootProject.ext.dependencies["timber"]
     api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["utilcode"]
+    api rootProject.ext.dependencies["arms"]
+    api rootProject.ext.dependencies["eventbus"]
     //test
     testImplementation rootProject.ext.dependencies["junit"]
 }

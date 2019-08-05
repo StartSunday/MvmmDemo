@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.fortunes.commonsdk.core.RouterConstants
 import com.fortunes.commonsdk.network.onHttpSubscribeNoToast
 import com.fortunes.commonsdk.utils.NavigationUtils
+import com.fortunes.commonsdk.utils.SharedPreferencesUtils
 import com.mou.basemvvm.base.BaseActivity
 import com.mou.basemvvm.helper.extens.bindDialogOrLifeCycle
 import com.mou.basemvvm.helper.extens.toast
@@ -28,6 +29,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
             mViewModel.getLogin(username = userName.text.toString(),password = password.text.toString())
                 .bindDialogOrLifeCycle(this)
                 .onHttpSubscribeNoToast(this){
+                    SharedPreferencesUtils.setParam("isLogin",true)
                     NavigationUtils.goMainActivity()
                     finish()
                 }

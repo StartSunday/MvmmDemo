@@ -5,6 +5,7 @@ import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.fortunes.commonsdk.BuildConfig
 import com.mou.basemvvm.integration.AppLifeCycles
+import com.squareup.leakcanary.LeakCanary
 
 import timber.log.Timber
 
@@ -44,10 +45,19 @@ class ApplicationLifeCyclesImpl : AppLifeCycles {
             ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(application) // 尽可能早,推荐在Application中初始化
-
+        initLeakCanary(application)
     }
 
     override fun onTerminate(application: Application) {
         Timber.i("${application.javaClass.simpleName} onCreate")
+    }
+    private fun initLeakCanary(application: Application){
+        if (BuildConfig.DEBUG){
+            //内存泄露检查工具
+            if (LeakCanary.isInAnalyzerProcess(application)){
+                return
+            }
+            LeakCanary.install(application)
+        }
     }
 }
